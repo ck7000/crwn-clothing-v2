@@ -4,27 +4,14 @@ import { useDispatch } from 'react-redux';
 
 import CategoriesPreview from '../categories-preview/categories-preview.component';
 import Category from '../category/category.component';
-import { getCategoriesAndDocuments } from '../../utils/firebase/firebase.utils';
-import { setCategories } from '../../store/categories/category.action';
-
-import SHOP_DATA from '../../shop-data';
+import { fetchCategoriesStart } from '../../store/categories/category.action';
 
 const Shop = () => {
   const dispatch = useDispatch();
 
-  /*useEffect(() => {
-    const getCategoriesMap = async () => {
-      const categoryMap = await getCategoriesAndDocuments();
-      dispatch(setCategoriesMap(categoryMap));
-    };
-
-    getCategoriesMap();
-  }, []);*/
-
-  // local testing
   useEffect(() => {
-    dispatch(setCategories(SHOP_DATA));
-  }, [dispatch]);
+    dispatch(fetchCategoriesStart());
+  }, []);
 
   return (
     <Routes>
